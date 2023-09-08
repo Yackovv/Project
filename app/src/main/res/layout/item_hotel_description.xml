@@ -3,55 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    style="@style/mStyleCards"
     android:layout_height="wrap_content"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
+        style="@style/mStyleTitleNameCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="@string/tv_about_hotel"/>
 
-    <TextView
-        android:id="@+id/tv_description_1"
-        style="@style/Text16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="16dp"
-        tools:text="3-th line" />
-
-    <TextView
-        android:id="@+id/tv_description_2"
-        style="@style/Text16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        tools:text="not free wi-fi" />
-
-    <TextView
-        android:id="@+id/tv_description_3"
-        style="@style/Text16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="18dp"
-        tools:text="30 km to airport" />
-
-    <TextView
-        android:id="@+id/tv_description_4"
-        style="@style/Text16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        tools:text="1234567" />
-
-    <TextView
-        android:id="@+id/tv_big_description"
-        style="@style/Text16sp"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_hotel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        app:chipStrokeColor="@color/transparent">
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:layout_marginTop="12dp"
+        android:id="@+id/tv_big_description"
+        style="@style/mStyleUsualText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_description_3"
@@ -61,17 +38,16 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
+        android:padding="15dp"
+        style="@style/mStyleLayout"
         app:layout_constraintEnd_toEndOf="@id/tv_big_description"
         app:layout_constraintStart_toStartOf="@+id/tv_big_description"
         app:layout_constraintTop_toBottomOf="@id/tv_big_description">
 
         <TextView
             android:id="@+id/tv1"
-            style="@style/Text16sp"
+            style="@style/mStyleSmallTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -81,7 +57,7 @@
 
         <TextView
             android:id="@+id/tv2"
-            style="@style/Text14sp"
+            style="@style/mStyleSmallDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_most_necessary"
@@ -98,7 +74,7 @@
 
         <TextView
             android:id="@+id/tv3"
-            style="@style/Text16sp"
+            style="@style/mStyleSmallTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -109,7 +85,7 @@
 
         <TextView
             android:id="@+id/tv4"
-            style="@style/Text14sp"
+            style="@style/mStyleSmallDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_most_necessary"
@@ -126,7 +102,7 @@
 
         <TextView
             android:id="@+id/tv5"
-            style="@style/Text16sp"
+            style="@style/mStyleSmallTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -137,9 +113,9 @@
 
         <TextView
             android:id="@+id/tv6"
-            style="@style/Text14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/mStyleSmallDescription"
             android:text="@string/tv_most_necessary"
             app:layout_constraintStart_toStartOf="@+id/tv5"
             app:layout_constraintTop_toBottomOf="@+id/tv5" />

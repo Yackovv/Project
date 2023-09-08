@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <Toolbar
-        android:id="@+id/toolBar"
+        android:id="@+id/toolBar_rooms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,20 +14,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/iv_btn_room_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_back_toolbar"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="16dp" />
+            android:contentDescription="@string/button_back" />
 
         <TextView
             android:id="@+id/tv_toolBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            style="@style/mStyleToolbar"
             tools:text="Hotel hotel hotel" />
     </Toolbar>
 
@@ -35,11 +32,12 @@
         android:id="@+id/rv_rooms"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/light_grey"
         android:layout_marginTop="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolBar_rooms" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

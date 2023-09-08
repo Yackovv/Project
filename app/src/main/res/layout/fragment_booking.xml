@@ -5,49 +5,36 @@
     android:layout_height="match_parent">
 
     <Toolbar
-        android:id="@+id/toolBar_hotel"
+        android:id="@+id/toolBar_booking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/iv_btn_booking_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back_toolbar"
+            android:contentDescription="@string/button_back" />
+
         <TextView
+            android:id="@+id/tv_toolBar"
             style="@style/mStyleToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toolbar_hotel" />
+            android:text="@string/tv_booking" />
     </Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_hotel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/light_grey"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/card_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar_hotel" />
-
-    <FrameLayout
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="28dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar_booking" />
 
-        <Button
-            android:id="@+id/btn_select_room"
-            style="@style/mStyleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_to_select_room" />
 
-    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

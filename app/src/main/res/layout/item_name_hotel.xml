@@ -1,48 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    style="@style/mStyleHotelCard"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_hotel"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="260dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#4CAF50" />
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/circle_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tv_score_hotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="5 brilliant" />
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vp_hotel"
+        app:layout_constraintEnd_toEndOf="@+id/vp_hotel"
+        app:layout_constraintStart_toStartOf="@+id/vp_hotel" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_score_hotel"
+        style="@style/mStyleChipItem.mStyleChipStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        tools:text="5 brilliant"
+        app:layout_constraintStart_toStartOf="@+id/vp_hotel"
+        app:layout_constraintTop_toBottomOf="@+id/vp_hotel" />
 
     <TextView
         android:id="@+id/tv_hotel_name"
+        style="@style/mStyleTitleNameCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/chip_score_hotel"
+        app:layout_constraintTop_toBottomOf="@+id/chip_score_hotel"
         tools:text="Name hotel" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_hotel_address"
+        style="@style/mStyleAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_hotel_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hotel_name"
+        tools:text="Address hotel" />
 
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="100 000" />
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/mStylePrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_hotel_address"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hotel_address"
+        tools:text="from 100 000" />
 
-        <TextView
-            android:id="@+id/tv_conditions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="tour with flight" />
+    <TextView
+        android:id="@+id/tv_conditions"
+        style="@style/mStylePriseDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+        app:layout_constraintStart_toEndOf="@+id/tv_price"
+        tools:text="tour with flight" />
 
-    </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

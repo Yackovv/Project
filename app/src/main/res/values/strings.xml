@@ -1,12 +1,25 @@
 <resources>
     <string name="app_name">Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btn_select_room">К выбору номера</string>
+    <string name="btn_to_select_room">К выбору номера</string>
     <string name="tv_about_hotel">Об отеле</string>
     <string name="tv_comfort">Удобства</string>
     <string name="tv_most_necessary">Самое необходимое</string>
     <string name="tv_what_included">Что включено</string>
     <string name="tv_what_unincluded">Что не включено</string>
     <string name="toolbar_hotel">Отель</string>
+    <string name="btn_select_room">Выбрать номер</string>
+    <string name="tv_from_price">"от "</string>
+    <string name="rub">"₽"</string>
+    <string name="tv_booking">Бронирование</string>
+    <string name="btn_choose_room">Выбрать номер</string>
+    <string name="tv_departure">Вылет из</string>
+    <string name="tv_country_city">Страна, город</string>
+    <string name="tv_date">Даты</string>
+    <string name="tv_number_night">Кол-во ночей</string>
+    <string name="tv_hotel_name">Отель</string>
+    <string name="tv_room">Номер</string>
+    <string name="tv_nutrition">Питание</string>
+    <string name="photo_hotel">Фото отеля</string>
+    <string name="button_back">Кнопка назад</string>
 </resources>
