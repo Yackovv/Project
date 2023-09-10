@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     style="@style/mStyleCards"
     android:layout_height="wrap_content"
-    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
@@ -130,7 +129,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv1"
-            app:srcCompat="@drawable/emoji_happy" />
+            app:srcCompat="@drawable/ic_emoji_happy"
+            android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -140,7 +140,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv3"
-            app:srcCompat="@drawable/tick_square" />
+            app:srcCompat="@drawable/ic_tick_square"
+            android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -151,7 +152,8 @@
             app:layout_constraintEnd_toStartOf="@+id/tv5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv5"
-            app:srcCompat="@drawable/close_square" />
+            app:srcCompat="@drawable/ic_close_square"
+            android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -161,7 +163,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv1"
-            app:srcCompat="@drawable/vector_55" />
+            app:srcCompat="@drawable/ic_vector_55"
+            android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -171,7 +174,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv3"
-            app:srcCompat="@drawable/vector_55" />
+            app:srcCompat="@drawable/ic_vector_55"
+            android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -181,7 +185,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv5"
-            app:srcCompat="@drawable/vector_55" />
+            app:srcCompat="@drawable/ic_vector_55"
+            android:contentDescription="@null" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

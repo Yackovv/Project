@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    style="@style/mStyleLayout"
-    android:padding="16dp"
+    style="@style/mStyleCards"
     android:layout_height="wrap_content">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -53,7 +52,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/chip_group_room"
         app:layout_constraintTop_toBottomOf="@+id/chip_group_room"
-        tools:text="About room"/>
+        android:text="@string/chip_about_room"/>
 
     <TextView
         android:id="@+id/tv_price"

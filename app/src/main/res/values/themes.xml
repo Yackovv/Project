@@ -11,7 +11,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="chipStyle">@style/mStyleChipItem</item>
         <item name="toolbarStyle">@color/white</item>
-        <item name="background">@color/white</item>
+        <item name="textInputStyle">@style/mStyleTextInputLayout</item>
     </style>
 
     <style name="Theme.Project" parent="Base.Theme.Project" />
