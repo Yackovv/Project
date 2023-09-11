@@ -3,7 +3,7 @@ package com.example.domain.enteties
 data class Booking (
     var id: Int?,
     var hotelName: String?,
-    var hotelAdress: String?,
+    var hotelAddress: String?,
     var horating: Int?,
     var ratingName: String?,
     var departure: String?,

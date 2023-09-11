@@ -1,4 +1,4 @@
-package com.example.project
+package com.example.project.rv
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project.databinding.ItemIvHotelPhotoBinding

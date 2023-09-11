@@ -11,7 +11,7 @@ import com.example.domain.enteties.Room
 
 object Mapper {
 
-    fun mapHotelToHotelDto(dto: HotelDto) = Hotel(
+    fun mapHotelDtoToHotel(dto: HotelDto) = Hotel(
         id = dto.id,
         name = dto.name,
         adress = dto.adress,
@@ -40,7 +40,7 @@ object Mapper {
     fun mapBookingDtoToBooking(dto: BookingDto) = Booking(
         id = dto.id,
         hotelName = dto.hotelName,
-        hotelAdress = dto.hotelAdress,
+        hotelAddress = dto.hotelAdress,
         horating = dto.horating,
         ratingName = dto.ratingName,
         departure = dto.departure,

@@ -1,0 +1,3 @@
+package com.example.project.adapter_delegate
+
+interface BookingDelegate

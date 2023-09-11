@@ -1,7 +1,9 @@
-package com.example.project
+package com.example.project.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.project.fragments.HotelFragment
+import com.example.project.R
 import com.example.project.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,18 +19,5 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, HotelFragment())
             .commit()
-
-
-//        val items: List<Any> = listOf(
-//            TextItem("Some text"),
-//            ButtonItem("Click me"),
-//            ImageItem("1234"),
-//            TextItem("al;kdfa")
-//        )
-//
-//        binding.rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        val adapter = MyListAdapter()
-//        adapter.items = items
-//        binding.rv.adapter = adapter
     }
 }

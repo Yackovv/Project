@@ -10,7 +10,6 @@
     <string name="toolbar_hotel">Отель</string>
     <string name="btn_select_room">Выбрать номер</string>
     <string name="tv_from_price">"от "</string>
-    <string name="rub">"₽"</string>
     <string name="tv_booking">Бронирование</string>
     <string name="btn_choose_room">Выбрать номер</string>
     <string name="tv_departure">Вылет из</string>
@@ -42,4 +41,10 @@
     <string name="tv_order_in_processed">Ваш заказ принят в работу</string>
     <string name="tv_super">Супер!</string>
     <string name="iv_confetti">Конфетти</string>
+    <string name="tv_hotel_price">от %s ₽</string>
+    <string name="room_price">%s ₽</string>
+    <string name="hotel_score">%d %s</string>
+    <string name="tv_dates">%s - %s</string>
+    <string name="booking_price">%d ₽</string>
+    <string name="btn_total_pay">Оплатить %d ₽</string>
 </resources>

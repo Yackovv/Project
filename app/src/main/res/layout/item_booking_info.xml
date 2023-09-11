@@ -9,85 +9,92 @@
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="0"
-        android:text="@string/tv_departure"/>
+        android:layout_column="0"
+        android:text="@string/tv_departure" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="1"
-        android:text="@string/tv_country_city"/>
+        android:layout_column="0"
+        android:text="@string/tv_country_city" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="2"
-        android:text="@string/tv_date"/>
+        android:layout_column="0"
+        android:text="@string/tv_date" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="3"
-        android:text="@string/tv_number_night"/>
+        android:layout_column="0"
+        android:text="@string/tv_number_night" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="4"
-        android:text="@string/tv_hotel_name"/>
+        android:layout_column="0"
+        android:text="@string/tv_hotel_name" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="5"
-        android:text="@string/tv_room"/>
+        android:layout_column="0"
+        android:text="@string/tv_room" />
 
     <TextView
         style="@style/mStyleColumnFirst"
-        android:layout_column="0"
         android:layout_row="6"
-        android:text="@string/tv_nutrition"/>
+        android:layout_column="0"
+        android:text="@string/tv_nutrition" />
 
     <TextView
+        android:id="@+id/tv_departure"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="0"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 
     <TextView
+        android:id="@+id/tv_arrival_country"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="1"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 
     <TextView
+        android:id="@+id/tv_tour_date"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="2"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        android:text="@string/tv_dates" />
 
     <TextView
+        android:id="@+id/tv_number_of_nights"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="3"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 
     <TextView
+        android:id="@+id/tv_hotel_name"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="4"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 
     <TextView
+        android:id="@+id/tv_room"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="5"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 
     <TextView
+        android:id="@+id/tv_nutrition"
         style="@style/mStyleColumnSecond"
-        android:layout_column="1"
         android:layout_row="6"
-        tools:text="Info info info info info"/>
+        android:layout_column="1"
+        tools:text="Info info info info info" />
 </GridLayout>

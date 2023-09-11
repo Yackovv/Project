@@ -1,12 +1,17 @@
-package com.example.project
+package com.example.project.adapter_delegate
 
 import androidx.viewpager2.widget.ViewPager2
+import com.example.project.R
 import com.example.project.databinding.ItemHotelDescriptionBinding
 import com.example.project.databinding.ItemNameHotelBinding
+import com.example.project.items.AboutTheHotelItem
+import com.example.project.items.HotelItem
+import com.example.project.rv.ViewPagerAdapter
 import com.google.android.material.chip.Chip
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
+import java.text.NumberFormat
 import java.util.Locale
 
 class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
@@ -24,7 +29,7 @@ class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
         ) {
             bind {
                 item.aboutTheHotel.peculiarities?.let {
-                    for(i in it){
+                    for (i in it) {
                         Chip(context).apply {
                             text = i
                             binding.chipGroupHotel.addView(this)
@@ -42,29 +47,24 @@ class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
             }
         ) {
             bind {
-                val hotel = item.hotel
-                val list = hotel.imageUrls
-                if (list != null) {
-                    binding.vpHotel.adapter = ViewPagerAdapter(list)
-                    binding.vpHotel.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-                }
                 with(binding) {
-                    circleIndicator.setViewPager(vpHotel)
-                    chipScoreHotel.text = buildString {
-                        append(hotel.rating)
-                        append(" ")
-                        append(hotel.ratingName)
+                    val hotel = item.hotel
+                    hotel.imageUrls?.let {
+                        vpHotel.adapter = ViewPagerAdapter(it)
+                        vpHotel.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                        circleIndicator.setViewPager(vpHotel)
                     }
+                    chipScoreHotel.text = String.format(
+                        getString(R.string.hotel_score),
+                        hotel.rating,
+                        hotel.ratingName
+                    )
                     tvHotelName.text = hotel.name
                     tvHotelAddress.text = hotel.adress
-                    tvPrice.text = buildString {
-                        append(
-                            context.getString(R.string.tv_from_price).lowercase(Locale.getDefault())
-                        )
-                        append(hotel.minimalPrice)
-                        append(" ")
-                        append(getString(R.string.rub))
-                    }
+                    val minPrice = NumberFormat
+                        .getNumberInstance(Locale.getDefault())
+                        .format(hotel.minimalPrice)
+                    tvPrice.text = String.format(getString(R.string.tv_hotel_price), minPrice)
                     tvConditions.text = hotel.priceForIt
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.project
+package com.example.project.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -16,9 +16,10 @@ class HotelViewModel(application: Application) : AndroidViewModel(application) {
 
     val hotelFlow = MutableSharedFlow<Hotel>()
 
-    fun getHotel(){
+    fun getHotel() {
         viewModelScope.launch {
-            hotelFlow.emit(getHotelUseCase.invoke())
+            val hotel = getHotelUseCase.invoke()
+            hotelFlow.emit(hotel)
         }
     }
 }
