@@ -27,6 +27,19 @@ class OrderIsPaidFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupClickListeners()
+        setupNumberOrder()
+    }
+
+    private fun setupNumberOrder() {
+        val numberOrder = Random.nextInt(1_000_000, 9_999_999)
+        binding.tvVerificationOrder.text = String.format(
+            getString(R.string.tv_verification_order),
+            numberOrder
+        )
+    }
+
+    private fun setupClickListeners() {
         binding.ivBtnOrderBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
@@ -37,12 +50,6 @@ class OrderIsPaidFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
-        val numberOrder = Random.nextInt(1_000_000, 9_999_999)
-        binding.tvVerificationOrder.text = String.format(
-            getString(R.string.tv_verification_order),
-            numberOrder
-        )
     }
 
     companion object {

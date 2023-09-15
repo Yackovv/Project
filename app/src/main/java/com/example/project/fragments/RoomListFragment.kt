@@ -2,7 +2,6 @@ package com.example.project.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,12 +63,8 @@ class RoomListFragment : Fragment() {
         }
 
         viewModel.getRoomList()
-
         lifecycleScope.launch {
             viewModel.roomListFlow.collect {
-                for (i in it) {
-                    Log.d("11111", it.toString())
-                }
                 val adapter = RoomListAdapter(it)
                 binding.rvRooms.adapter = adapter
                 adapter.btnClickListener = {

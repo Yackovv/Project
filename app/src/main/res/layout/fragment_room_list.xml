@@ -24,6 +24,7 @@
         <TextView
             android:id="@+id/tv_toolBar"
             android:layout_width="wrap_content"
+            android:maxWidth="250dp"
             android:layout_height="wrap_content"
             style="@style/mStyleToolbar"
             tools:text="Hotel hotel hotel" />

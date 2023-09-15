@@ -16,8 +16,7 @@ class RoomListViewModel @Inject constructor(
 
     fun getRoomList() {
         viewModelScope.launch {
-            val list = getRoomListUseCase.invoke()
-            roomListFlow.emit(list)
+            roomListFlow.emit(getRoomListUseCase.invoke())
         }
     }
 }
