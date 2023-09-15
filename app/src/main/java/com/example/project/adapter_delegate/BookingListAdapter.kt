@@ -2,7 +2,6 @@ package com.example.project.adapter_delegate
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import androidx.core.content.ContextCompat
@@ -25,9 +24,6 @@ import com.example.project.items.BookingTouristInfoItem
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import ru.tinkoff.decoro.MaskImpl
-import ru.tinkoff.decoro.slots.PredefinedSlots
-import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 
 class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
 
@@ -35,7 +31,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
     var addTouristListener: (() -> Unit)? = null
     private var buttonListenerTouristInfo: (() -> Boolean)? = null
     private var buttonListenerPhone: (() -> Boolean)? = null
-    private var buttonListenerMail: (() -> Boolean)? = null
+    private var buttonListenerMail: Boolean = false
 
     init {
         delegatesManager.addDelegate(bookingHotelNameDelegate())
@@ -83,7 +79,10 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                         booking.tourDateStart,
                         booking.tourDateStop
                     )
-                    tvNumberOfNights.text = booking.numberOfNights.toString()
+                    tvNumberOfNights.text = String.format(
+                        getString(R.string.tv_number_nights),
+                        booking.numberOfNights
+                    )
                     tvHotelName.text = booking.hotelName
                     tvRoom.text = booking.room
                     tvNutrition.text = booking.nutrition
@@ -101,44 +100,45 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                 ItemBookingCustomerInfoBinding.inflate(layoutInflater, parent, false)
             }
         ) {
+            val bgError =
+                ContextCompat.getDrawable(context, R.drawable.bg_radius_edit_text_error)
+            val bgUsual =
+                ContextCompat.getDrawable(context, R.drawable.bg_radius_edit_text)
+
             bind {
-                val bgError =
-                    ContextCompat.getDrawable(context, R.drawable.bg_radius_edit_text_error)
-                val bgUsual = ContextCompat.getDrawable(context, R.drawable.bg_radius_edit_text)
 
-                val mask = MaskImpl.createTerminated(PredefinedSlots.RUS_PHONE_NUMBER)
-                mask.placeholder = '*'
-                mask.isShowingEmptySlots = true
-                val watcher = MaskFormatWatcher(mask)
-                watcher.installOn(binding.etPhone)
-
-                buttonListenerPhone = {
-                    mask.isShowingEmptySlots = false
-                    mask.clear()
-                    mask.insertFront(binding.etPhone.text)
-                    binding.etPhone.background =
-                        if (mask.toUnformattedString().length == PHONE_LENGTH) {
-                            bgUsual
-                        } else {
-                            bgError
-                        }
-                    mask.toUnformattedString().length == PHONE_LENGTH
+                val watcherPhone = item.getMaskWatcherPhone()
+                watcherPhone.installOn(binding.etPhone)
+                binding.etPhone.setOnFocusChangeListener { _, b ->
+                    if (b) {
+                        binding.etPhone.text?.insert(0, "+")
+                    }
                 }
 
-                buttonListenerMail = {
-                    binding.etEmail.background =
-                        if (
-                            !binding.etEmail.text.isNullOrEmpty() &&
-                            Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString())
-                                .matches()
-                        ) {
+                buttonListenerPhone = {
+                    val isValid = item.checkValidNumber(binding.etPhone.text.toString())
+                    binding.etPhone.background =
+                        if (!isValid) {
                             bgUsual
                         } else {
                             bgError
                         }
-                    !binding.etEmail.text.isNullOrEmpty() &&
-                            Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString())
-                                .matches()
+                    isValid
+                }
+
+                binding.etEmail.setOnFocusChangeListener { _, b ->
+                    binding.etEmail.background = if (!b) {
+                        if (item.checkValidEmail(binding.etEmail.text.toString())) {
+                            buttonListenerMail = true
+                            bgUsual
+                        } else {
+                            buttonListenerMail = false
+                            bgError
+                        }
+                    } else {
+                        buttonListenerMail = true
+                        bgUsual
+                    }
                 }
             }
         }
@@ -157,6 +157,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
             var arrow: Drawable?
             bind {
                 with(binding) {
+
                     tvTouristNumber.text = String.format(
                         getString(R.string.tv_tourist_count),
                         item.numberTourist
@@ -240,9 +241,8 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                 )
                 binding.button.setOnClickListener {
                     val correctInfo = buttonListenerTouristInfo?.invoke() ?: false
-                    val correctMail = buttonListenerMail?.invoke() ?: false
                     val correctPhone = buttonListenerPhone?.invoke() ?: false
-                    if (correctInfo && correctMail && correctPhone) {
+                    if (correctInfo && buttonListenerMail && correctPhone) {
                         launchOrderPaidFragment?.invoke()
                     }
                 }
@@ -273,9 +273,5 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
         val fuelCharge = booking.fuelCharge
         val serviceCharge = booking.serviceCharge
         return tourPrice + fuelCharge + serviceCharge
-    }
-
-    companion object {
-        private const val PHONE_LENGTH = 12
     }
 }

@@ -18,10 +18,7 @@
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/circle_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:padding="5dp"
+        style="@style/mStyleCircleIndicator"
         app:layout_constraintBottom_toBottomOf="@+id/vp_room"
         app:layout_constraintEnd_toEndOf="@+id/vp_room"
         app:layout_constraintStart_toStartOf="@+id/vp_room" />

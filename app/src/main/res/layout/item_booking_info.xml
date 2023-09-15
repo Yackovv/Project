@@ -75,7 +75,7 @@
         style="@style/mStyleColumnSecond"
         android:layout_row="3"
         android:layout_column="1"
-        tools:text="Info info info info info" />
+        android:text="@string/tv_number_nights" />
 
     <TextView
         android:id="@+id/tv_hotel_name"

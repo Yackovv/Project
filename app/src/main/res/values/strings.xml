@@ -49,4 +49,5 @@
     <string name="tv_tourist_count">%s турист</string>
     <string name="btn_total_pay">Оплатить %d ₽</string>
     <string name="tv_order_paid">Заказ оплачен</string>
+    <string name="tv_number_nights">%d ночей</string>
 </resources>

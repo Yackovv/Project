@@ -16,8 +16,7 @@ class HotelViewModel @Inject constructor(
 
     fun getHotel() {
         viewModelScope.launch {
-            val hotel = getHotelUseCase.invoke()
-            hotelFlow.emit(hotel)
+            hotelFlow.emit(getHotelUseCase.invoke())
         }
     }
 }
