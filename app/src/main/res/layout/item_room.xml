@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    style="@style/mStyleCards"
+    android:layout_marginTop="0dp"
+    android:layout_height="wrap_content">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_room"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#4CAF50" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/circle_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vp_room"
+        app:layout_constraintEnd_toEndOf="@+id/vp_room"
+        app:layout_constraintStart_toStartOf="@+id/vp_room" />
+
+    <TextView
+        android:id="@+id/tv_room_name"
+        style="@style/mStyleTitleNameCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/vp_room"
+        app:layout_constraintStart_toStartOf="@+id/vp_room"
+        tools:text="Name room" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_room_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_room_name"
+        app:chipStrokeColor="@color/transparent"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_about_room"
+        style="@style/mStyleChipItem.mStyleChipAboutRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/chip_group_room"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group_room"
+        android:text="@string/chip_about_room"/>
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/mStylePrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/chip_about_room"
+        app:layout_constraintTop_toBottomOf="@+id/chip_about_room"
+        android:text="@string/room_price" />
+
+    <TextView
+        android:id="@+id/tv_conditions_room"
+        style="@style/mStylePriseDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="top"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+        app:layout_constraintStart_toEndOf="@+id/tv_price"
+        tools:text="tour with flight" />
+
+    <Button
+        android:id="@+id/btn_select_room"
+        style="@style/mStyleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_choose_room"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

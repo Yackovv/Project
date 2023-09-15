@@ -11,47 +11,53 @@ import com.example.domain.enteties.Room
 
 object Mapper {
 
-    fun mapHotelToHotelDto(dto: HotelDto) = Hotel(
-        id = dto.id,
-        name = dto.name,
-        adress = dto.adress,
-        minimalPrice = dto.minimalPrice,
-        priceForIt = dto.priceForIt,
-        rating = dto.rating,
-        ratingName = dto.ratingName,
-        imageUrls = dto.imageUrls,
-        aboutTheHotel = dto.aboutTheHotelDto?.let { mapAboutTheHotelDtoToAboutTheHotel(it) }
+    fun mapHotelDtoToHotel(dto: HotelDto) = Hotel(
+        id = dto.id ?: 0,
+        name = dto.name ?: "",
+        address = dto.adress ?: "",
+        minimalPrice = dto.minimalPrice ?: 0,
+        priceForIt = dto.priceForIt ?: "",
+        rating = dto.rating ?: 0,
+        ratingName = dto.ratingName ?: "",
+        imageUrls = dto.imageUrls ?: emptyList(),
+        aboutTheHotel = mapAboutTheHotelDtoToAboutTheHotel(dto.aboutTheHotelDto)
     )
 
-    private fun mapAboutTheHotelDtoToAboutTheHotel(dto: AboutTheHotelDto) = AboutTheHotel(
-        description = dto.description,
-        peculiarities = dto.peculiarities
-    )
+    private fun mapAboutTheHotelDtoToAboutTheHotel(dto: AboutTheHotelDto?): AboutTheHotel {
+        return if (dto != null) {
+            AboutTheHotel(
+                dto.description ?: "",
+                dto.peculiarities ?: emptyList()
+            )
+        } else {
+            AboutTheHotel("", emptyList())
+        }
+    }
 
     fun mapRoomDtoToRoom(dto: RoomDto) = Room(
-        id = dto.id,
-        name = dto.name,
-        price = dto.price,
-        pricePer = dto.pricePer,
-        peculiarities = dto.peculiarities,
-        imageUrls = dto.imageUrls
+        id = dto.id ?: 0,
+        name = dto.name ?: "",
+        price = dto.price ?: 0,
+        pricePer = dto.pricePer ?: "",
+        peculiarities = dto.peculiarities ?: emptyList(),
+        imageUrls = dto.imageUrls ?: emptyList()
     )
 
     fun mapBookingDtoToBooking(dto: BookingDto) = Booking(
-        id = dto.id,
-        hotelName = dto.hotelName,
-        hotelAdress = dto.hotelAdress,
-        horating = dto.horating,
-        ratingName = dto.ratingName,
-        departure = dto.departure,
-        arrivalCountry = dto.arrivalCountry,
-        tourDateStart = dto.tourDateStart,
-        tourDateStop = dto.tourDateStop,
-        numberOfNights = dto.numberOfNights,
-        room = dto.room,
-        nutrition = dto.nutrition,
-        tourPrice = dto.tourPrice,
-        fuelCharge = dto.fuelCharge,
-        serviceCharge = dto.serviceCharge
+        id = dto.id ?: 0,
+        hotelName = dto.hotelName ?: "",
+        hotelAddress = dto.hotelAdress ?: "",
+        horating = dto.horating ?: 0,
+        ratingName = dto.ratingName ?: "",
+        departure = dto.departure ?: "",
+        arrivalCountry = dto.arrivalCountry ?: "",
+        tourDateStart = dto.tourDateStart ?: "",
+        tourDateStop = dto.tourDateStop ?: "",
+        numberOfNights = dto.numberOfNights ?: 0,
+        room = dto.room ?: "",
+        nutrition = dto.nutrition ?: "",
+        tourPrice = dto.tourPrice ?: 0,
+        fuelCharge = dto.fuelCharge ?: 0,
+        serviceCharge = dto.serviceCharge ?: 0
     )
 }

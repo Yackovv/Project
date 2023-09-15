@@ -9,7 +9,7 @@ import com.example.domain.repository.RemoteRepository
 
 class RemoteRepositoryImpl : RemoteRepository {
     override suspend fun getHotel(): Hotel {
-        return Mapper.mapHotelToHotelDto(ApiFactory.apiService.getHotel())
+        return Mapper.mapHotelDtoToHotel(ApiFactory.apiService.getHotel())
     }
 
     override suspend fun getRoomList(): List<Room> {

@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0D72FF</color>
+    <color name="blue_input_text">#14142B</color>
+    <color name="light_blue">#E7F1FF</color>
+    <color name="grey">#828796</color>
+    <color name="grey_text_hint">#A9ABB7</color>
+    <color name="grey_for_line">#E8E9EC</color>
+    <color name="rv_background_color">#F6F6F9</color>
+    <color name="dark_grey">#2C3035</color>
+    <color name="light_grey">#FBFBFC</color>
+    <color name="dark_yellow">#FFA800</color>
+    <color name="light_yellow">#FFF4CC</color>
+    <color name="error">#DBC5C5</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>

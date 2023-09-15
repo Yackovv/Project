@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="mStyleCards">
+        <item name="android:background">@drawable/bg_radius_card</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+
+    <style name="mStyleTextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">@color/grey_text_hint</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@color/transparent</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
+
+    <style name="mStyleTextInputEditText" >
+        <item name="android:background">@drawable/bg_radius_edit_text</item>
+        <item name="android:textColor">@color/blue_input_text</item>
+        <item name="android:textColorHint">@color/grey_text_hint</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
+
+    <style name="mStyleEditTextError" parent="mStyleTextInputEditText" >
+        <item name="android:background">@drawable/bg_radius_edit_text_error</item>
+        <item name="android:textColor">@color/blue_input_text</item>
+        <item name="android:textColorHint">@color/grey_text_hint</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
+
+    <style name="mStyleHotelCard">
+        <item name="android:background">@drawable/bg_bottom_radius_card</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
+    <style name="mStyleLayout" parent="Base.Theme.Project">
+        <item name="android:background">@drawable/bg_radius_layout</item>
+    </style>
+
+    <style name="mStyleToolbar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="background">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="mStyleButton">
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/bg_radius_btn</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="mStyleButtonContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">28dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="mStyleLineView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/grey_for_line</item>
+    </style>
+
+    <style name="mStyleViewPager">
+        <item name="android:background">@drawable/bg_view_pager</item>
+    </style>
+
+    <style name="mStyleTitleNameCard">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="mStyleTouristTitle" parent="mStyleTitleNameCard">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="mStyleAddress">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="mStylePrise">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="mStylePriseDescription">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="mStyleColumnFirst" parent="mStylePriseDescription">
+        <item name="android:gravity">top</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">35dp</item>
+        <item name="android:minWidth">150dp</item>
+    </style>
+
+    <style name="mStyleColumnSecond" parent="mStyleColumnFirst">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_columnWeight">1</item>
+    </style>
+
+    <style name="mStyleColumnSecondPrice" parent="mStyleColumnSecond">
+        <item name="android:gravity">end</item>
+    </style>
+
+    <style name="mStyleSmallDescription">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="mStyleSmallTitle">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="mStyleUsualText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="mStyleChipItem">
+        <item name="chipStrokeColor">@color/transparent</item>
+        <item name="chipBackgroundColor">@color/light_grey</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="chipStartPadding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="chipEndPadding">10dp</item>
+        <item name="chipCornerRadius">5dp</item>
+        <item name="chipSpacing">8dp</item>
+        <item name="android:checkable">false</item>
+    </style>
+
+    <style name="mStyleChipItem.mStyleChipStar">
+        <item name="chipIcon">@drawable/ic_start_hotel</item>
+        <item name="chipBackgroundColor">@color/light_yellow</item>
+        <item name="chipIconVisible">true</item>
+        <item name="android:textColor">@color/dark_yellow</item>
+        <item name="android:text">@string/hotel_score</item>
+    </style>
+
+    <style name="mStyleChipItem.mStyleChipAboutRoom">
+        <item name="closeIcon">@drawable/ic_arrow_about_room</item>
+        <item name="chipBackgroundColor">@color/light_blue</item>
+        <item name="closeIconVisible">true</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="chipEndPadding">0dp</item>
+        <item name="closeIconSize">15dp</item>
+        <item name="closeIconStartPadding">5dp</item>
+        <item name="closeIconEndPadding">5dp</item>
+        <item name="closeIconTint">@color/blue</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="mStyleChipTouristOpen" parent="mStyleChipItem.mStyleChipAboutRoom">
+        <item name="closeIconStartPadding">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="closeIconEndPadding">0dp</item>
+        <item name="closeIconSize">30dp</item>
+        <item name="closeIcon">@drawable/ic_arrow_up</item>
+        <item name="android:checkable">true</item>
+    </style>
+
+    <style name="mStyleChipTouristClose" parent="mStyleChipTouristOpen">
+        <item name="closeIcon">@drawable/ic_arrow_down</item>
+    </style>
+
+    <style name="mStyleChipTouristAdd" parent="mStyleChipTouristOpen">
+        <item name="closeIcon">@drawable/ic_add</item>
+        <item name="closeIconTint">@color/light_blue</item>
+        <item name="chipBackgroundColor">@color/blue</item>
+    </style>
+
+</resources>
