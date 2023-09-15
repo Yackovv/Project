@@ -2,7 +2,6 @@ package com.example.project.adapter_delegate
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.core.content.ContextCompat
@@ -127,7 +126,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                     isValid
                 }
 
-                if(buttonListenerMail == null) {
+                if (buttonListenerMail == null) {
                     buttonListenerMail = {
                         binding.etEmail.background = bgError
                         false
@@ -135,9 +134,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                 }
 
                 binding.etEmail.setOnFocusChangeListener { _, b ->
-                    Log.d("11111", "Установка слушателя")
                     binding.etEmail.background = if (!b) {
-                        Log.d("11111", binding.etEmail.text.toString())
                         if (item.checkValidEmail(binding.etEmail.text.toString())) {
                             buttonListenerMail = { true }
                             bgUsual
