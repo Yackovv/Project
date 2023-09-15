@@ -34,6 +34,7 @@
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapWords"
             tools:text="Иван" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +48,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_second_name"
+            android:inputType="textCapWords"
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,8 +67,7 @@
             android:id="@+id/et_birthday"
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,6 +80,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_nationality"
+            android:inputType="textCapWords"
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -96,8 +98,7 @@
             android:id="@+id/et_passport"
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,8 +113,7 @@
             android:id="@+id/et_passport_validity"
             style="@style/mStyleTextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

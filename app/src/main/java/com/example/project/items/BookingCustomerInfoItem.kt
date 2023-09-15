@@ -16,9 +16,13 @@ class BookingCustomerInfoItem : BookingDelegate {
         return MaskFormatWatcher(mask)
     }
 
-    fun checkValidNumber(numberPhone: String) = numberPhone.contains('*')
-
+    fun checkValidNumber(numberPhone: String) : Boolean {
+        return if(numberPhone.isNotEmpty()){
+            !numberPhone.contains('*')
+        } else {
+            false
+        }
+    }
     fun checkValidEmail(email: String) = (email.isNotEmpty() &&
             Patterns.EMAIL_ADDRESS.matcher(email).matches())
-
 }

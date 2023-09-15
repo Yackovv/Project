@@ -2,6 +2,7 @@ package com.example.project.adapter_delegate
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.core.content.ContextCompat
@@ -31,7 +32,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
     var addTouristListener: (() -> Unit)? = null
     private var buttonListenerTouristInfo: (() -> Boolean)? = null
     private var buttonListenerPhone: (() -> Boolean)? = null
-    private var buttonListenerMail: Boolean = false
+    private var buttonListenerMail: (() -> Boolean)? = null
 
     init {
         delegatesManager.addDelegate(bookingHotelNameDelegate())
@@ -118,7 +119,7 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                 buttonListenerPhone = {
                     val isValid = item.checkValidNumber(binding.etPhone.text.toString())
                     binding.etPhone.background =
-                        if (!isValid) {
+                        if (isValid) {
                             bgUsual
                         } else {
                             bgError
@@ -126,17 +127,26 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                     isValid
                 }
 
+                if(buttonListenerMail == null) {
+                    buttonListenerMail = {
+                        binding.etEmail.background = bgError
+                        false
+                    }
+                }
+
                 binding.etEmail.setOnFocusChangeListener { _, b ->
+                    Log.d("11111", "Установка слушателя")
                     binding.etEmail.background = if (!b) {
+                        Log.d("11111", binding.etEmail.text.toString())
                         if (item.checkValidEmail(binding.etEmail.text.toString())) {
-                            buttonListenerMail = true
+                            buttonListenerMail = { true }
                             bgUsual
                         } else {
-                            buttonListenerMail = false
+                            buttonListenerMail = { false }
                             bgError
                         }
                     } else {
-                        buttonListenerMail = true
+                        buttonListenerMail = { true }
                         bgUsual
                     }
                 }
@@ -242,7 +252,8 @@ class BookingListAdapter : ListDelegationAdapter<List<BookingDelegate>>() {
                 binding.button.setOnClickListener {
                     val correctInfo = buttonListenerTouristInfo?.invoke() ?: false
                     val correctPhone = buttonListenerPhone?.invoke() ?: false
-                    if (correctInfo && buttonListenerMail && correctPhone) {
+                    val correctMail = buttonListenerMail?.invoke() ?: false
+                    if (correctInfo && correctMail && correctPhone) {
                         launchOrderPaidFragment?.invoke()
                     }
                 }
