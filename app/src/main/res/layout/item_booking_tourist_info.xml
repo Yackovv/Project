@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/tv_tourist_number"
             style="@style/mStyleTouristTitle"
-            tools:text="First tourist" />
+            android:text="@string/tv_tourist_count" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_open_tourist"

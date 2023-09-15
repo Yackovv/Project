@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.project.NumConvert
+import com.example.project.R
 import com.example.project.adapter_delegate.BookingDelegate
 import com.example.project.adapter_delegate.BookingListAdapter
 import com.example.project.databinding.FragmentBookingBinding
+import com.example.project.items.BookingButtonItem
 import com.example.project.items.BookingCustomerInfoItem
 import com.example.project.items.BookingHotelNameItem
 import com.example.project.items.BookingInfoItem
 import com.example.project.items.BookingPriceItem
-import com.example.project.items.BookingTouristAdd
+import com.example.project.items.BookingTouristAddItem
 import com.example.project.items.BookingTouristInfoItem
 import com.example.project.viewmodels.BookingViewModel
 import kotlinx.coroutines.launch
@@ -29,6 +32,7 @@ class BookingFragment : Fragment() {
         ViewModelProvider(this)[BookingViewModel::class.java]
     }
 
+    private var touristCounter = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,31 +45,49 @@ class BookingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = BookingListAdapter()
+        val items = mutableListOf<BookingDelegate>()
         viewModel.getBooking()
         lifecycleScope.launch {
             viewModel.bookingFlow.collect {
-                val items: List<BookingDelegate> = listOf(
+                val item = listOf(
                     BookingHotelNameItem(it),
                     BookingInfoItem(it),
                     BookingCustomerInfoItem(),
-                    BookingTouristInfoItem(),
-                    BookingTouristInfoItem(),
-                    BookingTouristAdd(),
-                    BookingPriceItem(it)
+                    BookingTouristInfoItem(NumConvert.getWordFromNumber(touristCounter++)),
+                    BookingTouristAddItem(),
+                    BookingPriceItem(it),
+                    BookingButtonItem(it)
                 )
-                val adapter = BookingListAdapter()
+                items.addAll(item)
                 adapter.items = items
                 binding.rvBooking.adapter = adapter
             }
         }
 
+        adapter.addTouristListener = {
+            items.add(
+                items.size - 3, BookingTouristInfoItem(
+                    NumConvert.getWordFromNumber(touristCounter++)
+                )
+            )
+            adapter.notifyItemInserted(items.size - 3)
+        }
+
         binding.ivBtnBookingBack.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        adapter.launchOrderPaidFragment = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_container, OrderIsPaidFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
         }
     }
 
     companion object {
-        fun newInstance(): BookingFragment{
+        fun newInstance(): BookingFragment {
             return BookingFragment()
         }
     }

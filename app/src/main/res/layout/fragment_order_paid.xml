@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_btn_booking_back"
+            android:id="@+id/iv_btn_order_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/button_back"
@@ -24,7 +24,7 @@
             style="@style/mStyleToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_booking" />
+            android:text="@string/tv_order_paid" />
     </Toolbar>
 
     <TextView
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_select_room"
+            android:id="@+id/btn_ok"
             style="@style/mStyleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -2,9 +2,11 @@ package com.example.project.adapter_delegate
 
 import androidx.viewpager2.widget.ViewPager2
 import com.example.project.R
+import com.example.project.databinding.ItemButtonBinding
 import com.example.project.databinding.ItemHotelDescriptionBinding
 import com.example.project.databinding.ItemNameHotelBinding
 import com.example.project.items.AboutTheHotelItem
+import com.example.project.items.HotelButtonItem
 import com.example.project.items.HotelItem
 import com.example.project.rv.ViewPagerAdapter
 import com.google.android.material.chip.Chip
@@ -16,9 +18,12 @@ import java.util.Locale
 
 class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
 
+    var clickListener: (() -> Unit)? = null
+
     init {
         delegatesManager.addDelegate(aboutTheHotelDelegate())
         delegatesManager.addDelegate(hotelItemDelegate())
+        delegatesManager.addDelegate(buttonHotelDelegate())
     }
 
     private fun aboutTheHotelDelegate(): AdapterDelegate<List<HotelDelegate>> =
@@ -28,7 +33,7 @@ class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
             }
         ) {
             bind {
-                item.aboutTheHotel.peculiarities?.let {
+                item.aboutTheHotel.peculiarities.let {
                     for (i in it) {
                         Chip(context).apply {
                             text = i
@@ -49,23 +54,35 @@ class HotelListAdapter : ListDelegationAdapter<List<HotelDelegate>>() {
             bind {
                 with(binding) {
                     val hotel = item.hotel
-                    hotel.imageUrls?.let {
-                        vpHotel.adapter = ViewPagerAdapter(it)
-                        vpHotel.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-                        circleIndicator.setViewPager(vpHotel)
-                    }
+                    vpHotel.adapter = ViewPagerAdapter(hotel.imageUrls)
+                    vpHotel.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                    circleIndicator.setViewPager(vpHotel)
                     chipScoreHotel.text = String.format(
                         getString(R.string.hotel_score),
                         hotel.rating,
                         hotel.ratingName
                     )
                     tvHotelName.text = hotel.name
-                    tvHotelAddress.text = hotel.adress
+                    tvHotelAddress.text = hotel.address
                     val minPrice = NumberFormat
                         .getNumberInstance(Locale.getDefault())
                         .format(hotel.minimalPrice)
                     tvPrice.text = String.format(getString(R.string.tv_hotel_price), minPrice)
                     tvConditions.text = hotel.priceForIt
+                }
+            }
+        }
+
+    private fun buttonHotelDelegate(): AdapterDelegate<List<HotelDelegate>> =
+        adapterDelegateViewBinding<HotelButtonItem, HotelDelegate, ItemButtonBinding>(
+            { layoutInflater, parent ->
+                ItemButtonBinding.inflate(layoutInflater, parent, false)
+            }
+        ) {
+            bind {
+                binding.button.text = getString(R.string.btn_to_select_room)
+                binding.button.setOnClickListener {
+                    clickListener?.invoke()
                 }
             }
         }

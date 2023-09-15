@@ -8,7 +8,7 @@ import com.example.domain.usecases.GetBookingUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 
-class BookingViewModel(): ViewModel() {
+class BookingViewModel: ViewModel() {
 
     private val repository = RemoteRepositoryImpl()
     private val getBookingUseCase = GetBookingUseCase(repository)

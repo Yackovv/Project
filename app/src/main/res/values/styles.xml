@@ -11,11 +11,20 @@
 
     <style name="mStyleTextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="android:textColorHint">@color/grey_text_hint</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@color/transparent</item>
         <item name="boxStrokeWidth">0dp</item>
     </style>
 
     <style name="mStyleTextInputEditText" >
         <item name="android:background">@drawable/bg_radius_edit_text</item>
+        <item name="android:textColor">@color/blue_input_text</item>
+        <item name="android:textColorHint">@color/grey_text_hint</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
+
+    <style name="mStyleEditTextError" parent="mStyleTextInputEditText" >
+        <item name="android:background">@drawable/bg_radius_edit_text_error</item>
         <item name="android:textColor">@color/blue_input_text</item>
         <item name="android:textColorHint">@color/grey_text_hint</item>
         <item name="boxStrokeWidth">0dp</item>

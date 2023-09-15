@@ -11,7 +11,7 @@ import com.google.android.material.chip.Chip
 import java.text.NumberFormat
 import java.util.Locale
 
-class RoomListAdapter(private val roomList: List<Room>): RecyclerView.Adapter<RoomViewHolder>() {
+class RoomListAdapter(private val roomList: List<Room>) : RecyclerView.Adapter<RoomViewHolder>() {
 
     var btnClickListener: (() -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder {
@@ -33,23 +33,20 @@ class RoomListAdapter(private val roomList: List<Room>): RecyclerView.Adapter<Ro
         binding.btnSelectRoom.setOnClickListener {
             btnClickListener?.invoke()
         }
-        with(binding){
-            room.imageUrls?.let {
-                vpRoom.adapter = ViewPagerAdapter(it)
-                vpRoom.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-                circleIndicator.setViewPager(vpRoom)
-            }
-            tvRoomName.text = room.name.toString()
+        with(binding) {
+            vpRoom.adapter = ViewPagerAdapter(room.imageUrls)
+            vpRoom.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            circleIndicator.setViewPager(vpRoom)
+            tvRoomName.text = room.name
             val price = NumberFormat.getNumberInstance(Locale.getDefault()).format(room.price)
-            tvPrice.text= String.format(
-                holder.itemView.context.getString(R.string.room_price), price)
-            tvConditionsRoom.text = room.pricePer?.lowercase(Locale.getDefault())
-            room.peculiarities?.let {
-                for(i in it){
-                    Chip(root.context).apply {
-                        text = i
-                        chipGroupRoom.addView(this)
-                    }
+            tvPrice.text = String.format(
+                holder.itemView.context.getString(R.string.room_price), price
+            )
+            tvConditionsRoom.text = room.pricePer.lowercase(Locale.getDefault())
+            for (i in room.peculiarities) {
+                Chip(root.context).apply {
+                    text = i
+                    chipGroupRoom.addView(this)
                 }
             }
         }

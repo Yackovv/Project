@@ -12,6 +12,7 @@ import com.example.project.adapter_delegate.HotelDelegate
 import com.example.project.adapter_delegate.HotelListAdapter
 import com.example.project.databinding.FragmentHotelBinding
 import com.example.project.items.AboutTheHotelItem
+import com.example.project.items.HotelButtonItem
 import com.example.project.items.HotelItem
 import com.example.project.viewmodels.HotelViewModel
 import kotlinx.coroutines.launch
@@ -39,29 +40,32 @@ class HotelFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = HotelListAdapter()
         viewModel.getHotel()
         lifecycleScope.launch {
             viewModel.hotelFlow.collect { hotel ->
-                hotel.aboutTheHotel?.let {
-                    val items: List<HotelDelegate> = listOf(
-                        HotelItem(hotel),
-                        AboutTheHotelItem(it)
-                    )
-                    val adapter = HotelListAdapter()
-                    adapter.items = items
-                    binding.rvHotel.adapter = adapter
-                    hotel.name?.let { name ->
-                        hotelName = name
-                    }
-                }
+                val items: List<HotelDelegate> = listOf(
+                    HotelItem(hotel),
+                    AboutTheHotelItem(hotel.aboutTheHotel),
+                    HotelButtonItem()
+                )
+                adapter.items = items
+                binding.rvHotel.adapter = adapter
+                hotelName = hotel.name
             }
         }
 
-        binding.btnSelectRoom.setOnClickListener {
+        adapter.clickListener = {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.main_container, RoomListFragment.newInstance(hotelName))
                 .addToBackStack(null)
                 .commit()
+        }
+    }
+
+    companion object{
+        fun newInstance(): HotelFragment{
+            return HotelFragment()
         }
     }
 }
