@@ -1,5 +1,6 @@
 package com.example.project.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,23 +9,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.project.ProjectApp
 import com.example.project.R
 import com.example.project.databinding.FragmentRoomListBinding
 import com.example.project.rv.RoomListAdapter
 import com.example.project.viewmodels.RoomListViewModel
+import com.example.project.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class RoomListFragment : Fragment() {
 
     private var _binding: FragmentRoomListBinding? = null
     private val binding
         get() = _binding ?: throw RuntimeException("FragmentRoomListBinding == null")
+    private val component by lazy {
+        (requireActivity().application as ProjectApp).component
+    }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[RoomListViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[RoomListViewModel::class.java]
     }
 
     private var hotelName = ""
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
